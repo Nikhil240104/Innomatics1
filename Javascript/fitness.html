@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Membership Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose the Best Fitness Membership Plan</h1>
+
+    <!-- Result display -->
+    <div class="result" id="result"></div>
+
+    <script>
+        function chooseMembershipPlan() {
+            // User inputs
+            let wantsTrainer = confirm("Do you want a personal trainer? (OK for Yes, Cancel for No)");
+            let wantsDietPlan = confirm("Do you want a diet plan? (OK for Yes, Cancel for No)");
+
+            // Determine the best plan
+            let result = choosePlan(wantsTrainer, wantsDietPlan);
+
+            // Display the result
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function choosePlan(wantsTrainer, wantsDietPlan) {
+            let plan = "Basic Membership ($20/month) - Only Gym Access";
+
+            if (wantsTrainer && wantsDietPlan) {
+                plan = "VIP Membership ($80/month) - Gym + Personal Trainer + Diet Plan";
+            } else if (wantsTrainer) {
+                plan = "Premium Membership ($50/month) - Gym + Personal Trainer";
+            }
+
+            return `Recommended Plan: ${plan}`;
+        }
+
+        // Run on page load
+        window.onload = chooseMembershipPlan;
+    </script>
+</body>
+</html>

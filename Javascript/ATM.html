@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Withdrawal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>ATM Withdrawal</h1>
+
+   <!-- result display -->
+    <div class="result" id="result"></div>
+
+    <script>
+        function performWithdrawal() {
+            // user values
+            let balance = parseFloat(prompt("Enter the Balance"));
+            let amount = parseFloat(prompt("Enter the Amount to Withdraw"));
+            let pin = parseInt(prompt("Enter the PIN"));
+            let enteredpin = parseInt(prompt("Enter the PIN again"));
+
+            // Perform withdrawal logic
+            let result = atmWithdrawl(balance, amount, pin, enteredpin);
+
+            // Display the result on the page
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function atmWithdrawl(balance, amount, pin, enteredpin) {
+            if (enteredpin !== pin) {
+                return "Incorrect PIN";
+            }
+            if (amount > balance) {
+                return "Insufficient Funds";
+            }
+            if (amount % 100 !== 0) {
+                return "Enter amount in multiples of 100";
+            }
+            balance -= amount;
+            return `
+                Withdrawal successful!<br>
+                Amount Withdrawn: ${amount}<br>
+                New Balance: ${balance}
+            `;
+        }
+        window.onload = performWithdrawal;
+    </script>
+</body>
+</html>

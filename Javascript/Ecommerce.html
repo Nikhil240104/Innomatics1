@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Coupon Redemption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>E-commerce Coupon Redemption</h1>
+
+    <!-- Result display -->
+    <div class="result" id="result"></div>
+
+    <script>
+        function applyCoupon() {
+            // User inputs
+            let orderAmount = parseFloat(prompt("Enter your order amount:"));
+            let couponCode = prompt("Enter coupon code (DISCOUNT10 or FREESHIP):").toUpperCase().trim();
+
+            // Calculate final price
+            let result = calculateFinalPrice(orderAmount, couponCode);
+
+            // Display the result
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function calculateFinalPrice(orderAmount, couponCode) {
+            const discountThreshold = 500;
+            const shippingThreshold = 200;
+            let finalPrice = orderAmount;
+            let discountApplied = "No discount applied";
+
+            if (couponCode === "DISCOUNT10" && orderAmount > discountThreshold) {
+                finalPrice *= 0.9; // 10% discount
+                discountApplied = "10% discount applied";
+            } else if (couponCode === "FREESHIP" && orderAmount > shippingThreshold) {
+                discountApplied = "Free shipping applied";
+            } else if (couponCode !== "") {
+                discountApplied = "Invalid coupon or not eligible";
+            }
+
+            return `
+                Order Amount: $${orderAmount.toFixed(2)}<br>
+                Coupon Code: ${couponCode}<br>
+                ${discountApplied}<br>
+                Final Price: $${finalPrice.toFixed(2)}
+            `;
+        }
+
+        // Run on page load
+        window.onload = applyCoupon;
+    </script>
+</body>
+</html>

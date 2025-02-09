@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Smart Traffic Light System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1> Smart Traffic Light System</h1>
+
+   <!-- result display -->
+    <div class="result" id="result"></div>
+
+    <script>
+        function lightsystem() {
+            // user values
+            let density = prompt("Enter the Density");
+
+            let result =  trafficLightControl(density);
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function  trafficLightControl(density) {
+            let ans;
+            if (density=="Heavy Traffic"){
+                ans="Green for 60 seconds";
+            }
+             if(density=="Moderate Traffic"){
+                ans="Green for 40 seconds";
+            }if(density=="Light Traffic"){
+                ans="Green for 20 seconds";
+            }
+            return `
+        
+                Density: ${density}<br>
+                Green Signal Time: ${ans}
+            `;
+        }
+        window.onload = lightsystem;
+    </script>
+</body>
+</html>

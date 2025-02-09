@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grading</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Grading</h1>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function gradingstudents() {
+            // user values
+            let marks = parseFloat(prompt("Enter the marks (out of 100):"));
+            let attendance = parseFloat(prompt("Enter the attendance percentage:"));
+    
+            let result = calculateGrade(marks, attendance);
+
+            // Display the result 
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function calculateGrade(marks, attendance) {
+    
+            if (attendance > 90) {
+                marks += 5;
+            }
+
+
+            let grade;
+            if (marks >= 90) {
+                grade = "A";
+            } else if (marks >= 80) {
+                grade = "B";
+            } else if (marks >= 70) {
+                grade = "C";
+            } else if (marks >= 60) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+            return `
+                Grade: ${grade} <br>
+                Final Marks: ${marks} <br>
+                Attendance: ${attendance}%
+            `;
+        }
+        window.onload = gradingstudents;
+    </script>
+</body>
+</html>

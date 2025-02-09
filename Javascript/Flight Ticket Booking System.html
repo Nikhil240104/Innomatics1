@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Ticket Booking System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flight Ticket Booking System</h1>
+
+   <!-- result display -->
+    <div class="result" id="result"></div>
+
+    <script>
+        function Flighttickects() {
+            // Get user inputs using prompt
+            let classType = prompt("Enter the class type (Economy, Business, First):");
+            let luggageWeight = parseFloat(prompt("Enter the luggage weight (in kg):"));
+            let isStudent = confirm("Are you a student? (OK for yes, Cancel for no):");
+            let isSenior = confirm("Are you a senior (above 60 years old)? (OK for yes, Cancel for no):");
+
+            let finalPrice = calculateFlightFare(classType, luggageWeight, isStudent, isSenior);
+
+      
+            document.getElementById("result").innerHTML = finalPrice;
+        }
+
+        function calculateFlightFare(classType, luggageWeight, isStudent, isSenior) {
+            let baseFare = 300;
+            let additionalCharges = 0;
+
+            //  charges based on class type
+            if (classType.toLowerCase() === "business") {
+                additionalCharges += 200;
+            } else if (classType.toLowerCase() === "first") {
+                additionalCharges += 500;
+            }
+
+            //  additional charges for luggage weight over 20kg
+            if (luggageWeight > 20) {
+                let extraWeight = luggageWeight - 20;
+                additionalCharges += Math.ceil(extraWeight / 10) * 50; 
+            }
+
+            //  total fare
+            let totalFare = baseFare + additionalCharges;
+
+            //  discounts for students and seniors
+            if (isStudent) {
+                totalFare *= 0.85; 
+            } else if (isSenior) {
+                totalFare *= 0.90; 
+            }
+
+    
+            return `
+            Class Type: ${classType}<br>
+            Luggage Weight: ${luggageWeight} kg<br>
+            Student: ${isStudent ? 'Yes' : 'No'}<br>
+            Senior: ${isSenior ? 'Yes' : 'No'}<br>
+            <h4>Total Fare: $${totalFare.toFixed(2)}</h4>
+            `;
+        }
+
+        window.onload = Flighttickects;
+    </script>
+</body>
+</html>

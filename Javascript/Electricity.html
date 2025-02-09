@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Electricity Bill Calculator</h1>
+
+    <!-- Result display -->
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateBill() {
+            let units = parseFloat(prompt("Enter the number of units consumed:"));
+            let timeOfDay = parseFloat(prompt("Enter the hour of the day (0-23 format):"));
+
+            let result = calculateElectricityBill(units, timeOfDay);
+
+            document.getElementById("result").innerHTML = `Total Bill: $${result.toFixed(2)}`;
+        }
+
+        function calculateElectricityBill(units, timeOfDay) {
+            let rate;
+
+            if (units <= 100) {
+                rate = 5;
+            } else if (units <= 300) {
+                rate = 4;
+            } else {
+                rate = 3;
+            }
+
+            // Peak hour surcharge (8 PM - 8 AM)
+            if (timeOfDay >= 20 || timeOfDay < 8) {
+                rate *= 1.1; // 10% increase
+            }
+
+            return units * rate;
+        }
+
+        window.onload = calculateBill;
+    </script>
+</body>
+</html>

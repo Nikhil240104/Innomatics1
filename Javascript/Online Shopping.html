@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Discount & Free Shipping
+    </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Online Shopping Discount & Free Shipping
+    </h1>
+
+   <!-- result display -->
+    <div class="result" id="result"></div>
+
+    <script>
+
+        function onlineshopping() {
+            // Get user values
+            let orderAmount = parseFloat(prompt("Enter the order Amount:"));
+   
+            let result = calculateFinalAmount(orderAmount);
+
+            document.getElementById("result").innerHTML = result;
+        }
+
+
+        function calculateFinalAmount(orderAmount) {
+             let finalpayable;
+            if (orderAmount>1000){
+                finalpayable=orderAmount-(orderAmount*0.2);
+            }
+            if(orderAmount>=500 && orderAmount<=1000){
+                finalpayable=orderAmount-(orderAmount*0.1);
+            }
+            if(orderAmount<500 && orderAmount>50){
+                finalpayable=orderAmount;
+            }if(orderAmount<=50){
+               finalpayable=orderAmount+10;
+            }
+
+            return `
+                orderAmount: ${orderAmount} <br>
+                Final Amount: ${finalpayable}
+            `;
+        }
+
+       
+        window.onload = onlineshopping;
+    </script>
+</body>
+</html>
