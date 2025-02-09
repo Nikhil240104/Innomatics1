@@ -1,4 +1,5 @@
 /* Reset and General Styles */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
 * {
     margin: 0;
     padding: 0;
@@ -684,3 +685,142 @@ input[type="radio"] {
 /* bottom */
 
 
+
+
+.footer {
+    background-color: #000;
+    padding: 40px 20px;
+    color: white;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-about {
+    width: 30%;
+}
+
+.footer-about h2 {
+    color: #ff0000;
+    font-size: 24px;
+}
+
+.footer-about p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 8px;
+    color: #fff;
+    font-size: 30px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ff0000;
+}
+
+.footer-links {
+    width: 30%;
+}
+
+.footer-links h3, .footer-contact h3 {
+    color: #ff0000;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.footer-contact {
+    width: 35%;
+}
+
+.footer-contact p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-contact i {
+    color: #ff0000;
+    margin-right: 8px;
+}
+
+.footer-contact a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background: white;
+        top: 60px;
+        width: 100%;
+        left: 0;
+        text-align: center;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+/* Slider Section */
+
+@media (max-width: 768px) {
+    .slider {
+        height: 30vh;
+    }
+}
+
+/* Content Layout */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+/* Card Layout */
+/* Courses Section */
+@media (max-width: 768px) {
+    .course-item {
+        width: 100%;
+    }
+}
+
+/* Footer */
+
+@media (max-width: 768px) {
+    .footer-about, .footer-links, .footer-contact {
+        width: 100%;
+        text-align: center;
+    }
+}

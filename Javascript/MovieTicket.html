@@ -27,11 +27,7 @@
             // user values
             let age = parseFloat(prompt("Enter the Age"));
             let showTime = parseFloat(prompt("Enter the showtiEnter show time (24-hour format, e.g., 14 for 2 PM"));
-
-            // Perform withdrawal logic
             let result = calculateTicketPrice(age, showTime);
-
-            // Display the result on the page
             document.getElementById("result").innerHTML = result;
         }
 
@@ -40,14 +36,11 @@
             let finalPrice = standardPrice;
         
             if (showTime < 17) {
-                // 20% discount for matinee shows
                 finalPrice *= 0.8;
             }
             if (age > 60) {
-                // 30% discount for senior citizens
                 finalPrice *= 0.7;
             } else if (age < 12) {
-                // 40% discount for children
                 finalPrice *= 0.6;
             }
         
